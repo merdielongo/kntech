@@ -13,19 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('owners', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->nullable()->unique();
-            $table->string('email')->unique();
-            $table->boolean('is_connected')->default(false);
-            $table->boolean('is_active')->default(false);
-            $table->string('kn_id')->nullable()->unique();
-            $table->enum('status', ['active', 'disabled', 'suspended', 'banned'])->default('disabled');
+            $table->foreignId('user_id')->nullable();
             $table->foreignId('contact_id')->nullable();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+            $table->string('kn_id')->nullable()->unique();
+            $table->boolean('is_active')->default(false);
+            $table->boolean('authorization')->default(false);
+            $table->enum('status', ['active', 'disabled', 'suspended', 'banned'])->default('disabled');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
@@ -36,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('owners');
     }
 };
