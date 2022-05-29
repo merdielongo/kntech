@@ -1,4 +1,4 @@
-@extends('layouts.app')
+{{-- @extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -70,4 +70,58 @@
         </div>
     </div>
 </div>
+@endsection --}}
+
+@extends('layouts.guest')
+
+@section('title-page')
+    Login
 @endsection
+
+@section('content')
+
+    <div class="row mt-5">
+        <div class="d-flex justify-content-center">
+            <div class="card" style="width: 38%">
+                <div class="card-body">
+                    <h4 class="card-title text-center">{{ __('Connexion') }}</h4>
+
+                        <form action="{{ route('login') }}" method="POST">
+                            @csrf
+
+                            <div class="form-group">
+                                <label><b>{{ __('Nom d\'utilisateur') }}</b></label>
+                                <input type="text" class="form-control" placeholder="Écrivez votre nom d'utilisateur" name="username">
+                                @error('username')
+                                    <span class="invalid-feedback mt-3" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <label><b>{{ __('Mot de passe') }}</b></label>
+                                <input type="password" class="form-control" placeholder="Écrivez votre mot de passe" name="password">
+                                @error('password')
+                                    <span class="invalid-feedback mt-3" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+
+                            <div class="form-group">
+                                <div class="custom-control custom-checkbox">
+                                    <input type="checkbox" class="custom-control-input" id="customCheck1">
+                                    <label class="custom-control-label" for="customCheck1">Se souvenir de moi?</label>
+                                </div>
+                            </div>
+                            <input type="submit" value="connexion" class="btn btn-primary">
+                        </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+
