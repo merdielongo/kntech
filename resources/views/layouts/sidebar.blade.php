@@ -25,10 +25,10 @@
                 </a>
             </li>
             <li class="sub-category">
-                <h3>Root</h3>
+                <h3>{{ Auth::user()->roles()->pluck('name')->first() }}</h2>
             </li>
             <li>
-                <a class="side-menu__item" href="{{ route('offers.index') }}">
+                <a class="side-menu__item" href="#">
                     <span class="side-menu__label">Offres</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
@@ -47,7 +47,7 @@
             </li>
             <li>
                 <a class="side-menu__item" href="#">
-                    <span class="side-menu__label">Restaurants</span>
+                    <span class="side-menu__label">Organisations</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
             </li>
@@ -59,19 +59,7 @@
             </li>
             <li>
                 <a class="side-menu__item" href="#">
-                    <span class="side-menu__label">Cuisiniers</span>
-                    <i class="angle fe fe-chevron-right"></i>
-                </a>
-            </li>
-            <li>
-                <a class="side-menu__item" href="#">
                     <span class="side-menu__label">Clients</span>
-                    <i class="angle fe fe-chevron-right"></i>
-                </a>
-            </li>
-            <li>
-                <a class="side-menu__item" href="#">
-                    <span class="side-menu__label">Produits</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
             </li>
