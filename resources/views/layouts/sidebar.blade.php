@@ -28,7 +28,7 @@
                 <h3>{{ Auth::user()->roles()->pluck('name')->first() }}</h2>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('offers.index') }}">
                     <span class="side-menu__label">Offres</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
