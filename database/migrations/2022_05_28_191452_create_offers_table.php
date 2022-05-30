@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->text('propositions')->nullable();
-            $table->string('availability_model_id');
-            $table->string('availability_model');
+            $table->string('availability_model_id')->nullable();
+            $table->string('availability_model')->nullable();
             $table->boolean('is_active')->default(false);
             $table->boolean('is_publish')->default(false);
             $table->double('price')->nullable();

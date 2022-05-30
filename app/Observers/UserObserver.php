@@ -25,8 +25,10 @@ class UserObserver
      */
     public function updated(User $user)
     {
-        $user->username = $user->kn_id;
-        $user->save();
+        if($user->username == null) {
+            $user->username = $user->kn_id;
+            $user->save();
+        }
     }
 
     /**
