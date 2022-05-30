@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('offers', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->string('kn_id')->unique()->nullable();
             $table->string('name');
             $table->text('description')->nullable();

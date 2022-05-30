@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('kn_id')->nullable()->unique();
             $table->foreignId('user_id')->nullable(); // active license
             $table->foreignId('organization_id')->nullable();
-            $table->foreignId('offer_id');
+            $table->foreignId('offer_id')->nullable();
             $table->integer('days')->default(0);
             $table->string('label')->nullable();
             $table->timestamp('expiration_at')->nullable();

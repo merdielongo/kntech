@@ -86,12 +86,18 @@
                 <div class="card-body">
                     <h4 class="card-title text-center">{{ __('Connexion') }}</h4>
 
+                       @if ($errors->has('error'))
+                            <div class="alert alert-danger text-center">
+                                {{ $errors->first('error') }}
+                            </div>
+                       @endif
+
                         <form action="{{ route('login') }}" method="POST">
                             @csrf
 
                             <div class="form-group">
                                 <label><b>{{ __('Nom d\'utilisateur') }}</b></label>
-                                <input type="text" class="form-control" placeholder="Écrivez votre nom d'utilisateur" name="username">
+                                <input type="text" class="form-control @error('username') is-invalid @enderror" placeholder="Écrivez votre nom d'utilisateur" name="username">
                                 @error('username')
                                     <span class="invalid-feedback mt-3" role="alert">
                                         <strong>{{ $message }}</strong>

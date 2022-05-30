@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Auth\RegisterController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,5 +20,6 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::post('user/store', [RegisterController::class, 'store'])->name('user.store');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
