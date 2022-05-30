@@ -14,7 +14,6 @@ trait KnGenerator
             if($m != null) {
                 $knId = self::generate($m->kn_id);
                 if($m->kn_id !== $knId) {
-                    isset($m->username) ?? $m->username = $knId;
                     $mModel->kn_id = $knId;
                     $mModel->update();
                 }
