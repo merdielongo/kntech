@@ -15,7 +15,7 @@
                     </div>
                 </div>
                 <div class="card-body">
-                    <div class="table-responsive">
+                    <div class="">
                         <table class="table table-hover text-nowrap border-bottom" id="basic-datatable">
                             <thead>
                                 <tr>
@@ -23,12 +23,10 @@
                                     <th class="wd-15p">Kn Id</th>
                                     <th class="wd-15p">Name</th>
                                     <th class="wd-15p">Price</th>
-                                    <th class="wd-20p">Availability</th>
                                     <th class="wd-15p">Active</th>
                                     <th class="wd-10p">Publish</th>
-                                    <th class="wd-25p">Promotion</th>
                                     <th class="wd-25p">Status</th>
-                                    <th class="dt-no-sorting">Action</th>
+                                    <th class="dt-no-sorting"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,12 +36,35 @@
                                     <td>{{ $offer->kn_id }}</td>
                                     <td>{{ $offer->name }}</td>
                                     <td>{{ $offer->price_full }}</td>
-                                    <td>{{ $offer->availability_model }}</td>
-                                   @if ($offer->is_active)
-                                        <span class="badge badge-success">Active</span>
-                                   @else
-                                        <span class="badge badge-warning">{{ $offer->status }}</span>
-                                   @endif
+                                    <td>
+                                        @if ($offer->is_active)
+                                            <span class="btn bg-primary text-white btn-sm">Activé</span>
+                                        @else
+                                            <span class="btn btn-sm text-white bg-danger rounded-pill">Désactivé</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        @if ($offer->is_publish)
+                                            <span class="btn bg-success text-white btn-sm">Oui</span>
+                                        @else
+                                            <span class="btn btn-sm text-white bg-danger rounded-pill">Non</span>
+                                        @endif
+                                    </td>
+                                    <td><h3 class="badge rounded-pill bg-warning p-2">{{ Str::upper($offer->status) }}</span></td>
+                                    <td class="text-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
+                                              <span class="visually-hidden">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                                              <li><a class="dropdown-item" href="#">Editer</a></li>
+                                              <li><a class="dropdown-item" href="#">Supprimer</a></li>
+                                              <li><a class="dropdown-item" href="#">Modifier le status</a></li>
+                                            </ul>
+                                          </div>
+
+                                    </td>
                                 </tr>
                                @endforeach
                             </tbody>

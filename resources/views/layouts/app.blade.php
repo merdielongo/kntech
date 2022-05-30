@@ -90,6 +90,8 @@
     <!-- META DATA -->
     <meta charset="UTF-8">
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=0'>
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="description" content="Monitoring | @yield('title-page')">
     <meta name="author" content="Merdi Elongo">
@@ -99,6 +101,13 @@
 
     <!-- TITLE -->
     <title>Monitoring | @yield('title-page') </title>
+
+    <!-- Scripts -->
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+
+
+    <!-- Styles -->
+    {{-- <link href="{{ asset('css/app.css') }}" rel="stylesheet"> --}}
 
     <!-- BOOTSTRAP CSS -->
     <link id="style" href="{{ asset('admin-assets/sash/assets/plugins/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet" />
@@ -113,7 +122,7 @@
     <link href="{{ asset('admin-assets/sash/assets/css/icons.css') }}" rel="stylesheet" />
 
     <!-- COLOR SKIN CSS -->
-    <link id="theme" rel="stylesheet" type="text/css" media="all" href="../assets/colors/color1.css" />
+    <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('admin-assets/sash/assets/colors/color1.css') }}" />
 
 </head>
 

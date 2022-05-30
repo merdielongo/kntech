@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::table('offers', function (Blueprint $table) {
-            //
+            $table->enum('status', ['active','disabled','suspended','deleted'])->default('disabled');
         });
     }
 
@@ -26,7 +26,7 @@ return new class extends Migration
     public function down()
     {
         Schema::table('offers', function (Blueprint $table) {
-            $table->enum('status', ['active','disabled','suspended','deleted'])->default('disabled');
+            //
         });
     }
 };

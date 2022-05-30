@@ -31,3 +31,7 @@ Auth::routes();
 Route::post('user/store', [RegisterController::class, 'store'])->name('user.store');
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

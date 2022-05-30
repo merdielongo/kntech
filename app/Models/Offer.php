@@ -35,4 +35,8 @@ class Offer extends Model
         return $this->belongsTo(Currency::class);
     }
 
+    public function getPriceFullAttribute() : string {
+        return $this->price .' '. $this->currency->symbol;
+    }
+
 }
