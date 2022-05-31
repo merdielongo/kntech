@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\OwnerController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -24,6 +25,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function() {
 
     Route::resource('offers', OfferController::class);
+    Route::resource('owners', OwnerController::class);
 
 });
 

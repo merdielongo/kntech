@@ -34,14 +34,14 @@
                 </a>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
-                    <span class="side-menu__label">Licenses</span>
+                <a class="side-menu__item" href="{{ route('owners.index') }}">
+                    <span class="side-menu__label">Proprietaire</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
             </li>
             <li>
                 <a class="side-menu__item" href="#">
-                    <span class="side-menu__label">Proprietaire</span>
+                    <span class="side-menu__label">Licenses</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
             </li>
