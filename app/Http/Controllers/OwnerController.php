@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateOwnerRequest;
+use App\Repositories\CityRepository;
+use App\Repositories\CountryRepository;
 use App\Repositories\OwnerRepository;
+use App\Repositories\ProvinceRepository;
+use App\Repositories\StreetRepository;
+use App\Repositories\TownshipRepository;
+use App\Services\OwnerService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -23,8 +30,24 @@ class OwnerController extends Controller
         ]);
     }
 
-    // public function create() : View {
-    //     // return view()
-    // }
+    public function create() : View {
+        $countries = (new CountryRepository())->getAll();
+        $provinces = (new ProvinceRepository())->getAll();
+        $cities = (new CityRepository())->getAll();
+        $townships = (new  TownshipRepository())->getAll();
+        $streets = (new StreetRepository())->getAll();
+        return view('admin.owners.create', [
+            'countries' => $countries,
+            'provinces' => $provinces,
+            'cities' => $cities,
+            'townships' => $townships,
+            'streets' => $streets
+        ]);
+    }
+
+    public function store(CreateOwnerRequest $request, OwnerService $ownerService) {
+        $owner = $ownerService->create($request, 'owner');
+        return redirect()->route('owners.index')->with('success', $owner->kn_id.' a été enregistrer');
+    }
 
 }

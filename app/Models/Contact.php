@@ -40,5 +40,9 @@ class Contact extends Model
         return $this->belongsTo(Owner::class, 'model_id');
     }
 
+    public function getFullNameAttribute() : string {
+        return $this->first_name .' '. $this->last_name;
+    }
+
 
 }

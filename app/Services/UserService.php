@@ -6,6 +6,7 @@ use App\Http\Requests\CreateUserRequest;
 use App\Models\User;
 use App\Repositories\ContactRepository;
 use App\Repositories\UserRepository;
+use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 
 class UserService
@@ -27,7 +28,7 @@ class UserService
         $this->contactRepository = new ContactRepository();
     }
 
-    public function create(CreateUserRequest $request, ...$roles) : User {
+    public function create(FormRequest $request, ...$roles) : User {
         DB::beginTransaction();
         // create contact
         $contact = $this->contactRepository->store([

@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-6">
                         <div class="d-flex justify-content-end">
-                            <a href="{{ route('offers.create') }}" class="btn btn-primary">Ajouter</a>
+                            <a href="{{ route('owners.create') }}" class="btn btn-primary">Ajouter</a>
                         </div>
                     </div>
                 </div>
@@ -22,9 +22,8 @@
                                     <th>#</th>
                                     <th class="wd-15p">Kn Id</th>
                                     <th class="wd-15p">Full name</th>
-                                    <th class="wd-15p">Gender</th>
-                                    <th class="wd-15p">Email</th>
                                     <th class="wd-15p">Active</th>
+                                    <th class="wd-15p">Auhtorized</th>
                                     <th class="wd-25p">Status</th>
                                     <th class="dt-no-sorting"></th>
                                 </tr>
@@ -35,8 +34,6 @@
                                     <td>{{ $k+1 }}</td>
                                     <td>{{ $owner->kn_id }}</td>
                                     <td>{{ $owner->contact->full_name }}</td>
-                                    <td>{{ $owner->gender }}</td>
-                                    <th>{{ $owner->contact->email }}</th>
                                     <td>
                                         @if ($owner->is_active)
                                             <span class="btn bg-primary text-white btn-sm">Activé</span>
@@ -45,13 +42,13 @@
                                         @endif
                                     </td>
                                     <td>
-                                        @if ($offer->is_publish)
+                                        @if ($owner->authorization)
                                             <span class="btn bg-success text-white btn-sm">Oui</span>
                                         @else
                                             <span class="btn btn-sm text-white bg-danger rounded-pill">Non</span>
                                         @endif
                                     </td>
-                                    <td><h3 class="badge rounded-pill bg-warning p-2">{{ Str::upper($offer->status) }}</span></td>
+                                    <td><h3 class="badge rounded-pill bg-warning p-2">{{ Str::upper($owner->status) }}</span></td>
                                     <td class="text-center">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-primary">Detail</button>
