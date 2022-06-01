@@ -40,25 +40,25 @@
                 </a>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('licenses.index') }}">
                     <span class="side-menu__label">Licenses</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('organizations.index') }}">
                     <span class="side-menu__label">Organisations</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('managers.index') }}">
                     <span class="side-menu__label">Managers</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('clients.index') }}">
                     <span class="side-menu__label">Clients</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
@@ -70,37 +70,31 @@
                 </a>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('countries.index') }}">
                     <span class="side-menu__label">Pays</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
-                    <span class="side-menu__label">Money</span>
-                    <i class="angle fe fe-chevron-right"></i>
-                </a>
-            </li>
-            <li>
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('provinces.index') }}">
                     <span class="side-menu__label">Provinces</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('cities.index') }}">
                     <span class="side-menu__label">Villes</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('townships.index') }}">
                     <span class="side-menu__label">Communes</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('streets.index') }}">
                     <span class="side-menu__label">Avenues</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>

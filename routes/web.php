@@ -1,10 +1,19 @@
 <?php
 
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\CityController;
+use App\Http\Controllers\CountryController;
+use App\Http\Controllers\LicenseController;
+use App\Http\Controllers\ManagerController;
 use App\Http\Controllers\OfferController;
+use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\OwnerController;
+use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\StreetController;
+use App\Http\Controllers\TownshipController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Laravel\Passport\Http\Controllers\ClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +35,15 @@ Route::middleware(['auth'])->group(function() {
 
     Route::resource('offers', OfferController::class);
     Route::resource('owners', OwnerController::class);
+    Route::resource('managers', ManagerController::class);
+    Route::resource('licenses', LicenseController::class);
+    Route::resource('organizations', OrganizationController::class);
+    Route::resource('clients', ClientController::class);
+    Route::resource('countries', CountryController::class);
+    Route::resource('provinces', ProvinceController::class);
+    Route::resource('cities', CityController::class);
+    Route::resource('townships', TownshipController::class);
+    Route::resource('streets', StreetController::class);
 
 });
 
