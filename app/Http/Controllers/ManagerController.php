@@ -2,7 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CreateManagerRequest;
+use App\Repositories\CityRepository;
+use App\Repositories\CountryRepository;
 use App\Repositories\ManagerRepository;
+use App\Repositories\ProvinceRepository;
+use App\Repositories\StreetRepository;
+use App\Repositories\TownshipRepository;
+use App\Services\ManagerService;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
@@ -23,7 +30,26 @@ class ManagerController extends Controller
     }
 
     public function create() : View {
-        return view('admin.managers.create');
+        $countries = (new CountryRepository())->getAll();
+        $provinces = (new ProvinceRepository())->getAll();
+        $cities = (new CityRepository())->getAll();
+        $townships = (new  TownshipRepository())->getAll();
+        $streets = (new StreetRepository())->getAll();
+        return view('admin.managers.create', [
+            'countries' => $countries,
+            'provinces' => $provinces,
+            'cities' => $cities,
+            'townships' => $townships,
+            'streets' => $streets
+        ]);
+    }
+
+    public function store(CreateManagerRequest $request, ManagerService $managerService) {
+        $manager = $managerService->create($request, 'manager');
+        return redirect()->route('managers.index')->with(
+            'success',
+            $manager->contact->full_name. 'a été enregistrer avec success'
+        );
     }
 
 }
