@@ -37,7 +37,14 @@ class OfferService
             // $model ?? 'availability_model_id' => $model->id,
             'price' => $request->price
         ]);
-        
+
+        return $offer;
+    }
+
+    public function active(Offer $offer, bool $status) : Offer {
+        $offer->is_active = $status ? true : false ?? false;
+        $offer->status = $status ? 'active' : 'disabled' ?? 'suspended';
+        $offer->save();
         return $offer;
     }
 

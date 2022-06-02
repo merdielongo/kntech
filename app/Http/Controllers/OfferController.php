@@ -40,10 +40,8 @@ class OfferController extends Controller
         return redirect()->route('offers.index')->with('success', $offer->name.' a été enregustrer avec success');
     }
 
-    public function active(Offer $offer, bool $status) {
-        $offer->is_active = $status ? true : false ?? false;
-        $offer->status = $status ? 'active' : 'disabled' ?? 'suspended';
-        $offer->save();
+    public function active(Offer $offer, bool $status, OfferService $offerService) {
+        $offerService->active($offer, $status);
         return redirect()->route('offers.index')->with('success', 'Le status a ete modifier');
     }
 
