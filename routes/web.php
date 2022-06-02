@@ -9,6 +9,7 @@ use App\Http\Controllers\OfferController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\OwnerController;
 use App\Http\Controllers\ProvinceController;
+use App\Http\Controllers\SessionController;
 use App\Http\Controllers\StreetController;
 use App\Http\Controllers\TownshipController;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,7 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('managers', ManagerController::class);
     Route::resource('licenses', LicenseController::class);
     Route::resource('organizations', OrganizationController::class);
+    Route::resource('sessions', SessionController::class);
     Route::resource('clients', ClientController::class);
     Route::resource('countries', CountryController::class);
     Route::resource('provinces', ProvinceController::class);
