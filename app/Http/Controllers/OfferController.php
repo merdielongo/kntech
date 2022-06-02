@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateOfferRequest;
+use App\Models\Offer;
 use App\Repositories\CurrencyRepository;
 use App\Repositories\OfferRepository;
 use App\Services\OfferService;
@@ -37,6 +38,13 @@ class OfferController extends Controller
     public function store(CreateOfferRequest $request, OfferService $offerService) {
         $offer = $offerService->create($request);
         return redirect()->route('offers.index')->with('success', $offer->name.' a été enregustrer avec success');
+    }
+
+    public function active(Offer $offer, bool $status) {
+        $offer->is_active = $status ? true : false ?? false;
+        $offer->status = $status ? 'active' : 'disabled' ?? 'suspended';
+        $offer->save();
+        return redirect()->route('offers.index')->with('success', 'Le status a ete modifier');
     }
 
 

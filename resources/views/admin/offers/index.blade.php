@@ -20,12 +20,12 @@
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th class="wd-15p">Kn Id</th>
-                                    <th class="wd-15p">Name</th>
-                                    <th class="wd-15p">Price</th>
-                                    <th class="wd-15p">Active</th>
-                                    <th class="wd-10p">Publish</th>
-                                    <th class="wd-25p">Status</th>
+                                    <th>Kn Id</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Active</th>
+                                    <th>Publish</th>
+                                    <th>Status</th>
                                     <th class="dt-no-sorting"></th>
                                 </tr>
                             </thead>
@@ -38,14 +38,14 @@
                                     <td>{{ $offer->price_full }}</td>
                                     <td>
                                         @if ($offer->is_active)
-                                            <span class="btn bg-primary text-white btn-sm">Activé</span>
+                                            <span class="btn btn-sm text-white bg-primary rounded-pill">Activé</span>
                                         @else
                                             <span class="btn btn-sm text-white bg-danger rounded-pill">Désactivé</span>
                                         @endif
                                     </td>
                                     <td>
                                         @if ($offer->is_publish)
-                                            <span class="btn bg-success text-white btn-sm">Oui</span>
+                                            <span class="btn btn-sm text-white bg-success rounded-pill">Oui</span>
                                         @else
                                             <span class="btn btn-sm text-white bg-danger rounded-pill">Non</span>
                                         @endif
@@ -60,7 +60,24 @@
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
                                               <li><a class="dropdown-item" href="#">Editer</a></li>
                                               <li><a class="dropdown-item" href="#">Supprimer</a></li>
-                                              <li><a class="dropdown-item" href="#">Modifier le status</a></li>
+                                              @if ($offer->is_active)
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ route('offers.active', ['offer' => $offer, 'status' => 0]) }}">
+                                                        Désactivé l'offre
+                                                    </a>
+                                                </li>
+                                            @else
+                                                <li><a class="dropdown-item" href="{{ route('offers.active', ['offer' => $offer, 'status' => true]) }}">
+                                                    Activé l'offre
+                                                    </a>
+                                                </li>
+                                              @endif
+                                                <li><a class="dropdown-item" href="#">Modifier le status</a></li>
+                                              @if($offer->is_publish)
+                                                <li><a class="dropdown-item" href="#">Annuler la publication de l'offre</a></li>
+                                              @else
+                                                <li><a class="dropdown-item" href="#">Publié l'offre</a></li>
+                                              @endif
                                             </ul>
                                           </div>
 

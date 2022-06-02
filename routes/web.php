@@ -34,6 +34,8 @@ Route::get('/', function () {
 
 Route::middleware(['auth'])->group(function() {
 
+    /* admin */
+    // basic route
     Route::resource('offers', OfferController::class);
     Route::resource('owners', OwnerController::class);
     Route::resource('managers', ManagerController::class);
@@ -46,6 +48,11 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('cities', CityController::class);
     Route::resource('townships', TownshipController::class);
     Route::resource('streets', StreetController::class);
+
+    // Activation route
+    Route::get('offers/{offer}/activation/{status?}', [OfferController::class, 'active'])->name('offers.active');
+
+    /* end admin */
 
 });
 
