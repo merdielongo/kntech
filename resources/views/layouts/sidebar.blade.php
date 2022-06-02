@@ -64,7 +64,7 @@
                 </a>
             </li>
             <li>
-                <a class="side-menu__item" href="#">
+                <a class="side-menu__item" href="{{ route('sessions.index') }}">
                     <span class="side-menu__label">Sessions</span>
                     <i class="angle fe fe-chevron-right"></i>
                 </a>
