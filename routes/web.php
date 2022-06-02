@@ -52,6 +52,9 @@ Route::middleware(['auth'])->group(function() {
     // Activation route
     Route::get('offers/{offer}/activation/{status?}', [OfferController::class, 'active'])->name('offers.active');
 
+    // Publish route
+    Route::get('offers/{offer}/publish/{publish?}', [OfferController::class, 'publish'])->name('offers.publish');
+
     /* end admin */
 
 });

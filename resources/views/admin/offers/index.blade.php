@@ -60,23 +60,35 @@
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
                                               <li><a class="dropdown-item" href="#">Editer</a></li>
                                               <li><a class="dropdown-item" href="#">Supprimer</a></li>
+                                              <li><a class="dropdown-item" href="#">Modifier le status</a></li>
+                                              
                                               @if ($offer->is_active)
                                                 <li>
                                                     <a class="dropdown-item" href="{{ route('offers.active', ['offer' => $offer, 'status' => 0]) }}">
                                                         Désactivé l'offre
                                                     </a>
                                                 </li>
-                                            @else
+                                              @else
                                                 <li><a class="dropdown-item" href="{{ route('offers.active', ['offer' => $offer, 'status' => true]) }}">
                                                     Activé l'offre
                                                     </a>
                                                 </li>
                                               @endif
-                                                <li><a class="dropdown-item" href="#">Modifier le status</a></li>
-                                              @if($offer->is_publish)
-                                                <li><a class="dropdown-item" href="#">Annuler la publication de l'offre</a></li>
-                                              @else
-                                                <li><a class="dropdown-item" href="#">Publié l'offre</a></li>
+
+                                              @if($offer->is_active)
+                                                @if($offer->is_publish)
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('offers.publish', ['offer' => $offer, 'publish' => 0]) }}">
+                                                            Annuler la publication de l'offre
+                                                        </a>
+                                                    </li>
+                                                @else
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('offers.publish', ['offer' => $offer, 'publish' => true]) }}">
+                                                            Publié l'offre
+                                                        </a>
+                                                    </li>
+                                                @endif
                                               @endif
                                             </ul>
                                           </div>

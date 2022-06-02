@@ -47,5 +47,11 @@ class OfferController extends Controller
         return redirect()->route('offers.index')->with('success', 'Le status a ete modifier');
     }
 
+    public function publish(Offer $offer, bool $publish) {
+        $offer->is_publish = $publish;
+        $offer->save();
+        return redirect()->route('offers.index')->with('success', 'L\'offre vient d\'être publié');
+    }
+
 
 }
