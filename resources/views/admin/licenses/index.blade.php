@@ -23,7 +23,6 @@
                                     <th>Kn Id</th>
                                     <th>Organization</th>
                                     <th>Owner</th>
-                                    <th>Days</th>
                                     <th>Expired</th>
                                     <th>Active</th>
                                     <th class="wd-25p">Status</th>
@@ -36,8 +35,7 @@
                                     <td>{{ $k+1 }}</td>
                                     <td>{{ $license->kn_id }}</td>
                                     <td>{{ $license->organization->name }}</td>
-                                    <td>{{ $license->owner->contact->full_name }}</td>
-                                    <td>{{ $license->day }}</td>
+                                    <td>{{ $license->organization->owner->contact->full_name }}</td>
                                     <td>
                                         @if ($license->is_expired)
                                             <span class="btn bg-primary text-white btn-sm">NON</span>
