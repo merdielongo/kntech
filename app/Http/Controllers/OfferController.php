@@ -35,6 +35,12 @@ class OfferController extends Controller
         ]);
     }
 
+    public function show(Offer $offer) : View {
+        return view('admin.offers.show', [
+            'offer' => $offer
+        ]);
+    }
+
     public function store(CreateOfferRequest $request, OfferService $offerService) {
         $offer = $offerService->create($request);
         return redirect()->route('offers.index')->with('success', $offer->name.' a été enregustrer avec success');

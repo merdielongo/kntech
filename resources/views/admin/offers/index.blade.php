@@ -53,7 +53,7 @@
                                     <td><h3 class="badge rounded-pill bg-warning p-2">{{ Str::upper($offer->status) }}</span></td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="{{ route('offers.show', ['offer' => $offer]) }}" class="btn btn-primary">Detail</a>
                                             <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
                                               <span class="visually-hidden">Toggle Dropdown</span>
                                             </button>
@@ -61,7 +61,7 @@
                                               <li><a class="dropdown-item" href="#">Editer</a></li>
                                               <li><a class="dropdown-item" href="#">Supprimer</a></li>
                                               <li><a class="dropdown-item" href="#">Modifier le status</a></li>
-                                              
+
                                               @if ($offer->is_active)
                                                 <li>
                                                     <a class="dropdown-item" href="{{ route('offers.active', ['offer' => $offer, 'status' => 0]) }}">
