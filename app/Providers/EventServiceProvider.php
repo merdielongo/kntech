@@ -4,9 +4,11 @@ namespace App\Providers;
 
 use App\Models\License;
 use App\Models\Offer;
+use App\Models\Owner;
 use App\Models\User;
 use App\Observers\LicenseObserver;
 use App\Observers\OfferObserver;
+use App\Observers\OwnerObserver;
 use App\Observers\UserObserver;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
@@ -36,6 +38,7 @@ class EventServiceProvider extends ServiceProvider
         User::observe(UserObserver::class);
         License::observe(LicenseObserver::class);
         Offer::observe(OfferObserver::class);
+        Owner::observe(OwnerObserver::class);
     }
 
     /**

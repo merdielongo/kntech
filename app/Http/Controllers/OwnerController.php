@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateOwnerRequest;
+use App\Models\Owner;
 use App\Repositories\CityRepository;
 use App\Repositories\CountryRepository;
 use App\Repositories\OwnerRepository;
@@ -49,5 +50,18 @@ class OwnerController extends Controller
         $owner = $ownerService->create($request, 'owner');
         return redirect()->route('owners.index')->with('success', $owner->kn_id.' a été enregistrer');
     }
+
+
+    public function active(Owner $owner, bool $status, OwnerService $ownerService) {
+        $ownerService->active($owner, $status);
+        return redirect()->route('owners.index')->with('success', 'Le status a ete modifier');
+    }
+
+    public function authorized(Owner $owner, bool $authorization) {
+        $owner->authorization = $authorization;
+        $owner->save();
+        return redirect()->route('owners.index')->with('success', 'Authorization accordée');
+    }
+
 
 }

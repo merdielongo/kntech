@@ -84,4 +84,11 @@ class OwnerService
         return $owner;
     }
 
+    public function active(Owner $owner, bool $status) : Owner {
+        $owner->is_active = $status ? true : false ?? false;
+        $owner->status = $status ? 'active' : 'disabled' ?? 'suspended';
+        $owner->save();
+        return $owner;
+    }
+
 }

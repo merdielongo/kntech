@@ -36,14 +36,14 @@
                                     <td>{{ $owner->contact->full_name }}</td>
                                     <td>
                                         @if ($owner->is_active)
-                                            <span class="btn bg-primary text-white btn-sm">Activé</span>
+                                            <span class="btn btn-sm text-white bg-secondary rounded-pill">Activé</span>
                                         @else
                                             <span class="btn btn-sm text-white bg-danger rounded-pill">Désactivé</span>
                                         @endif
                                     </td>
                                     <td>
                                         @if ($owner->authorization)
-                                            <span class="btn bg-success text-white btn-sm">Oui</span>
+                                            <span class="btn btn-sm text-white bg-success rounded-pill">Oui</span>
                                         @else
                                             <span class="btn btn-sm text-white bg-danger rounded-pill">Non</span>
                                         @endif
@@ -59,6 +59,34 @@
                                               <li><a class="dropdown-item" href="#">Editer</a></li>
                                               <li><a class="dropdown-item" href="#">Supprimer</a></li>
                                               <li><a class="dropdown-item" href="#">Modifier le status</a></li>
+                                              @if ($owner->is_active)
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ route('owners.active', ['owner' => $owner, 'status' => 0]) }}">
+                                                        Désactivé le compte
+                                                    </a>
+                                                </li>
+                                              @else
+                                                <li><a class="dropdown-item" href="{{ route('owners.active', ['owner' => $owner, 'status' => true]) }}">
+                                                    Activé le compte
+                                                    </a>
+                                                </li>
+                                              @endif
+
+                                              @if($owner->is_active)
+                                                @if($owner->authorization)
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('owners.authorized', ['owner' => $owner, 'authorization' => 0]) }}">
+                                                            Annuler l'authorization
+                                                        </a>
+                                                    </li>
+                                                @else
+                                                    <li>
+                                                        <a class="dropdown-item" href="{{ route('owners.authorized', ['owner' => $owner, 'authorization' => true]) }}">
+                                                            Activé l'authorization
+                                                        </a>
+                                                    </li>
+                                                @endif
+                                              @endif
                                             </ul>
                                           </div>
 

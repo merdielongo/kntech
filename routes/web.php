@@ -51,6 +51,8 @@ Route::middleware(['auth'])->group(function() {
 
     // Activation route
     Route::get('offers/{offer}/activation/{status?}', [OfferController::class, 'active'])->name('offers.active');
+    Route::get('owners/{owner}/activation/{status?}', [OwnerController::class, 'active'])->name('owners.active');
+    Route::get('owners/{owner}/authorized/{authorization?}', [OwnerController::class, 'authorized'])->name('owners.authorized');
 
     // Publish route
     Route::get('offers/{offer}/publish/{publish?}', [OfferController::class, 'publish'])->name('offers.publish');
