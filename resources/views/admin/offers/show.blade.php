@@ -141,6 +141,49 @@
         <!-- COL END -->
     </div>
 
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="row p-5">
+                    {{-- <div class="col-6">
+                        <h3 class="card-title">Liste des offres disponibles</h3>
+                    </div> --}}
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <h3 class="card-title">Liste des offres disponibles</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="">
+                        <table class="table table-hover text-nowrap border-bottom" id="basic-datatable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Kn ID</th>
+                                    <th>Status</th>
+                                    <th>Date d'activation</th>
+                                    <th>Date d'expiration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($licenses as $key => $license)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $license->kn_id }}</td>
+                                    <td>{{ $license->status }}</td>
+                                    <td>{{ $license->beginning_license }}</td>
+                                    <td>{{ $license->expiration_at }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 @endsection
 
 @section('script')

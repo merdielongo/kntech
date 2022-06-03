@@ -6,6 +6,7 @@ use App\Http\Requests\CreateOfferRequest;
 use App\Models\Offer;
 use App\Repositories\CurrencyRepository;
 use App\Repositories\OfferRepository;
+use App\Services\LicenseService;
 use App\Services\OfferService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -35,9 +36,11 @@ class OfferController extends Controller
         ]);
     }
 
-    public function show(Offer $offer) : View {
+    public function show(Offer $offer, LicenseService $licenseService) : View {
+        $licenses = $licenseService->getInOffer($offer);
         return view('admin.offers.show', [
-            'offer' => $offer
+            'offer' => $offer,
+            'licenses' => $licenses
         ]);
     }
 

@@ -4,7 +4,9 @@ namespace App\Services;
 
 use App\Http\Requests\CreateLicenseRequest;
 use App\Models\License;
+use App\Models\Offer;
 use App\Repositories\LicenseRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 class LicenseService
@@ -29,6 +31,11 @@ class LicenseService
         ]);
         DB::commit();
         return $license;
+    }
+
+    public function getInOffer(Offer $offer) : Collection {
+        $licenses = $this->licenseRepository->getList(['offer_id' => $offer->id]);
+        return $licenses;
     }
 
 

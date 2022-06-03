@@ -4,7 +4,9 @@ namespace App\Services;
 
 use App\Http\Requests\CreateOfferRequest;
 use App\Models\Offer;
+use App\Repositories\LicenseRepository;
 use App\Repositories\OfferRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,9 +18,12 @@ class OfferService
      */
     protected OfferRepository $offerRepository;
 
+    protected LicenseRepository $licenseRepository;
+
     public function __construct()
     {
         $this->offerRepository = new OfferRepository();
+        $this->licenseRepository = new LicenseRepository();
     }
 
     /**
