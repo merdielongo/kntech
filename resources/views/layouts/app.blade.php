@@ -215,6 +215,10 @@
     <!-- CHART-CIRCLE JS-->
     <script src="{{ asset('admin-assets/sash/assets/js/circle-progress.min.js') }}"></script>
 
+    <!-- MORRIS CHART JS-->
+    <script src="{{ asset('admin-assets/sash/assets/plugins/morris/raphael-min.js') }}"></script>
+    <script src="{{ asset('admin-assets/sash/assets/plugins/morris/morris.js') }}"></script>
+
     <!-- PIETY CHART JS-->
     <script src="{{ asset('admin-assets/sash/assets/plugins/peitychart/jquery.peity.min.js') }}"></script>
     <script src="{{ asset('admin-assets/sash/assets/plugins/peitychart/peitychart.init.js') }}"></script>
@@ -226,6 +230,17 @@
     <script src="{{ asset('admin-assets/sash/assets/plugins/p-scroll/perfect-scrollbar.js') }}"></script>
     <script src="{{ asset('admin-assets/sash/assets/plugins/p-scroll/pscroll.js') }}"></script>
     <script src="{{ asset('admin-assets/sash/assets/plugins/p-scroll/pscroll-1.js') }}"></script>
+
+    <!-- GALLERY JS -->
+    <script src="{{ asset('admin-assets/sash/assets/plugins/gallery/picturefill.js') }}"></script>
+    <script src="{{ asset('admin-assets/sash/assets/plugins/gallery/lightgallery.js') }}"></script>
+    <script src="{{ asset('admin-assets/sash/assets/plugins/gallery/lightgallery-1.js') }}"></script>
+    <script src="{{ asset('admin-assets/sash/assets/plugins/gallery/lg-pager.js') }}"></script>
+    <script src="{{ asset('admin-assets/sash/assets/plugins/gallery/lg-autoplay.js') }}"></script>
+    <script src="{{ asset('admin-assets/sash/assets/plugins/gallery/lg-fullscreen.js') }}"></script>
+    <script src="{{ asset('admin-assets/sash/assets/plugins/gallery/lg-zoom.js') }}"></script>
+    <script src="{{ asset('admin-assets/sash/assets/plugins/gallery/lg-hash.js') }}"></script>
+    <script src="{{ asset('admin-assets/sash/assets/plugins/gallery/lg-share.js') }}"></script>
 
     <!-- INTERNAL CHARTJS CHART JS-->
     <script src="{{ asset('admin-assets/sash/assets/plugins/chart/Chart.bundle.js') }}"></script>
@@ -281,6 +296,8 @@
 
     <!-- INTERNAL INDEX JS -->
     <script src="{{ asset('admin-assets/sash/assets/js/index1.js') }}"></script>
+    <script src="{{ asset('admin-assets/sash/assets/js/index.js') }}"></script>
+    <script src="{{ asset('admin-assets/sash/assets/js/widget.js') }}"></script>
 
 
     <!-- FILE UPLOADES JS -->
@@ -341,6 +358,8 @@
 
     <!-- CUSTOM JS -->
     <script src="{{ asset('admin-assets/sash/assets/js/custom.js') }}"></script>
+
+   @yield('script')
 
 </body>
 
