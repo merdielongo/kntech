@@ -6,7 +6,7 @@
             <div class="card">
                 <div class="row p-5">
                     <div class="col-6">
-                        <h3 class="card-title">Liste des offres disponibles</h3>
+                        <h3 class="card-title">Liste des proprietaires enregistrés</h3>
                     </div>
                     <div class="col-6">
                         <div class="d-flex justify-content-end">
