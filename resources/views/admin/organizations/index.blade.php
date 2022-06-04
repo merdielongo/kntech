@@ -37,7 +37,7 @@
                                     <td>{{ $organization->name }}</td>
                                     <td>
                                         @if ($organization->is_active)
-                                            <span class="btn bg-primary text-white btn-sm">Activé</span>
+                                            <span class="btn btn-sm text-white bg-primary rounded-pill">Activé</span>
                                         @else
                                             <span class="btn btn-sm text-white bg-danger rounded-pill">Désactivé</span>
                                         @endif
@@ -50,6 +50,18 @@
                                               <span class="visually-hidden">Toggle Dropdown</span>
                                             </button>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                                                @if ($organization->is_active)
+                                                <li>
+                                                    <a class="dropdown-item" href="{{ route('organizations.active', ['organization' => $organization, 'status' => 0]) }}">
+                                                        Désactivé l'organization
+                                                    </a>
+                                                </li>
+                                              @else
+                                                <li><a class="dropdown-item" href="{{ route('organizations.active', ['organization' => $organization, 'status' => true]) }}">
+                                                    Activé l'organization
+                                                    </a>
+                                                </li>
+                                              @endif
                                               <li><a class="dropdown-item" href="#">Editer</a></li>
                                               <li><a class="dropdown-item" href="#">Supprimer</a></li>
                                               <li><a class="dropdown-item" href="#">Modifier le status</a></li>

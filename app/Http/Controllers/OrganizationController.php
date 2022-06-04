@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateOrganizationRequest;
+use App\Models\Organization;
 use App\Repositories\ManagerRepository;
 use App\Repositories\OrganizationRepository;
 use App\Repositories\OwnerRepository;
@@ -40,6 +41,11 @@ class OrganizationController extends Controller
         $logo = $organizationService->uploadLogo($request);
         $organization = $organizationService->create($request, $logo);
         return redirect()->route('organizations.index')->with('success', $organization->name.' a été enregistrer avec success');
+    }
+
+    public function active(Organization $organization, bool $status, OrganizationService $organizationService) {
+        $organizationService->active($organization, $status);
+        return redirect()->route('organizations.index')->with('success', 'Le status a ete modifier');
     }
 
 }

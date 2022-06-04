@@ -44,5 +44,12 @@ class OrganizationService
         }
     }
 
+    public function active(Organization $organization, bool $status) : Organization {
+        $organization->is_active = $status ? true : false ?? false;
+        $organization->status = $status ? 'active' : 'disabled' ?? 'suspended';
+        $organization->save();
+        return $organization;
+    }
+
 
 }
