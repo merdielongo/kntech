@@ -49,13 +49,32 @@ Route::middleware(['auth'])->group(function() {
     Route::resource('townships', TownshipController::class);
     Route::resource('streets', StreetController::class);
 
-    // Activation route
-    Route::get('offers/{offer}/activation/{status?}', [OfferController::class, 'active'])->name('offers.active');
-    Route::get('owners/{owner}/activation/{status?}', [OwnerController::class, 'active'])->name('owners.active');
-    Route::get('owners/{owner}/authorized/{authorization?}', [OwnerController::class, 'authorized'])->name('owners.authorized');
+    // Offer Controller
+    Route::controller(OfferController::class)->group(function() {
+        Route::get('offers/{offer}/activation/{status?}', 'active')->name('offers.active');
+        Route::get('offers/{offer}/publish/{publish?}', 'publish')->name('offers.publish');
+    });
 
-    // Publish route
-    Route::get('offers/{offer}/publish/{publish?}', [OfferController::class, 'publish'])->name('offers.publish');
+    // Owner Controller
+    Route::controller(OwnerController::class)->group(function() {
+        Route::get('owners/{owner}/activation/{status?}', 'active')->name('owners.active');
+        Route::get('owners/{owner}/authorized/{authorization?}', 'authorized')->name('owners.authorized');
+    });
+
+    // License Controller
+    Route::controller(LicenseController::class)->group(function() {
+
+    });
+
+    // Manager Controller
+    Route::controller(ManagerController::class)->group(function() {
+
+    });
+
+    // Organization Controller
+    Route::controller(OrganizationController::class)->group(function() {
+        Route::get('organizations/{organization}/activation/{status?}', 'active')->name('organizations.active');
+    });
 
     /* end admin */
 
