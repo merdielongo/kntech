@@ -51,7 +51,7 @@
                                     <td><h3 class="badge rounded-pill bg-warning p-2">{{ Str::upper($owner->status) }}</span></td>
                                     <td class="text-center">
                                         <div class="btn-group">
-                                            <button type="button" class="btn btn-primary">Detail</button>
+                                            <a href="{{ route('owners.show', ['owner' => $owner]) }}" class="btn btn-primary">Detail</a>
                                             <button type="button" class="btn btn-primary dropdown-toggle dropdown-toggle-split" id="dropdownMenuReference" data-bs-toggle="dropdown" aria-expanded="false" data-bs-reference="parent">
                                               <span class="visually-hidden">Toggle Dropdown</span>
                                             </button>

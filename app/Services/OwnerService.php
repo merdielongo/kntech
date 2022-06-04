@@ -3,11 +3,13 @@
 namespace App\Services;
 
 use App\Http\Requests\CreateOwnerRequest;
+use App\Models\Organization;
 use App\Models\Owner;
 use App\Repositories\AddressRepository;
 use App\Repositories\CityRepository;
 use App\Repositories\ContactRepository;
 use App\Repositories\CountryRepository;
+use App\Repositories\OrganizationRepository;
 use App\Repositories\OwnerRepository;
 use App\Repositories\ProvinceRepository;
 use App\Repositories\TownshipRepository;
@@ -25,6 +27,7 @@ class OwnerService
     protected CityRepository $cityRepository;
     protected TownshipRepository $townshipRepository;
     protected AddressRepository $addressRepository;
+    protected OrganizationRepository $organizationRepository;
 
     public function __construct() {
         $this->ownerRepository = new OwnerRepository();
@@ -35,6 +38,7 @@ class OwnerService
         $this->cityRepository = new CityRepository();
         $this->townshipRepository = new TownshipRepository();
         $this->addressRepository = new AddressRepository();
+        $this->organizationRepository = new OrganizationRepository();
     }
 
 
@@ -89,6 +93,10 @@ class OwnerService
         $owner->status = $status ? 'active' : 'disabled' ?? 'suspended';
         $owner->save();
         return $owner;
+    }
+
+    public function byOrganization(Owner $owner) : Organization {
+        return $this->organizationRepository->get('owner_id', $owner->id);
     }
 
 }

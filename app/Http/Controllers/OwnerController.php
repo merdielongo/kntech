@@ -46,6 +46,14 @@ class OwnerController extends Controller
         ]);
     }
 
+    public function show(Owner $owner, OwnerService $ownerService) : View {
+        $organization = $ownerService->byOrganization($owner);
+        return view('admin.owners.show', [
+            'owner' => $owner,
+            'organization' => $organization
+        ]);
+    }
+
     public function store(CreateOwnerRequest $request, OwnerService $ownerService) {
         $owner = $ownerService->create($request, 'owner');
         return redirect()->route('owners.index')->with('success', $owner->kn_id.' a été enregistrer');
