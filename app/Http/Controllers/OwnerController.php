@@ -47,10 +47,12 @@ class OwnerController extends Controller
     }
 
     public function show(Owner $owner, OwnerService $ownerService) : View {
-        $organization = $ownerService->byOrganization($owner);
+        $organization = $ownerService->getByOrganization($owner);
+        $organizations = $ownerService->getByAllOrganization($owner);
         return view('admin.owners.show', [
             'owner' => $owner,
-            'organization' => $organization
+            'organization' => $organization,
+            'organizations' => $organizations
         ]);
     }
 

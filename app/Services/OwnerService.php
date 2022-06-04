@@ -14,6 +14,7 @@ use App\Repositories\OwnerRepository;
 use App\Repositories\ProvinceRepository;
 use App\Repositories\TownshipRepository;
 use App\Repositories\UserRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\DB;
 
 class OwnerService
@@ -95,8 +96,13 @@ class OwnerService
         return $owner;
     }
 
-    public function byOrganization(Owner $owner) : Organization {
+    public function getByOrganization(Owner $owner) : Organization {
         return $this->organizationRepository->get('owner_id', $owner->id);
+    }
+
+    public function getByAllOrganization(Owner $owner) : Collection {
+        $organizations = $this->organizationRepository->getList(['owner_id' => $owner->id]);
+        return $organizations;
     }
 
 }
