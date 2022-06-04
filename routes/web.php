@@ -68,7 +68,7 @@ Route::middleware(['auth'])->group(function() {
 
     // Manager Controller
     Route::controller(ManagerController::class)->group(function() {
-
+        Route::get('managers/{manager}/activation/{status?}', 'active')->name('managers.active');
     });
 
     // Organization Controller

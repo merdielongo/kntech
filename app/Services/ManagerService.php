@@ -85,4 +85,11 @@ class ManagerService
         DB::commit();
         return $manager;
     }
+
+    public function active(Manager $manager, bool $status) : Manager {
+        $manager->is_active = $status ? true : false ?? false;
+        $manager->status = $status ? 'active' : 'disabled' ?? 'suspended';
+        $manager->save();
+        return $manager;
+    }
 }

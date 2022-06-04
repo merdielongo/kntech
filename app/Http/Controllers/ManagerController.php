@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CreateManagerRequest;
+use App\Models\Manager;
 use App\Repositories\CityRepository;
 use App\Repositories\CountryRepository;
 use App\Repositories\ManagerRepository;
@@ -50,6 +51,11 @@ class ManagerController extends Controller
             'success',
             $manager->contact->full_name. 'a été enregistrer avec success'
         );
+    }
+
+    public function active(Manager $manager, bool $status, ManagerService $managerService) {
+        $managerService->active($manager, $status);
+        return redirect()->route('managers.index')->with('success', 'Le status a ete modifier');
     }
 
 }
