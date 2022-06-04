@@ -120,6 +120,7 @@
 
     <!--- FONT-ICONS CSS -->
     <link href="{{ asset('admin-assets/sash/assets/css/icons.css') }}" rel="stylesheet" />
+    <link href="{{ asset('node-snackbar/dist/snackbar.min.css') }}" rel="stylesheet" type="text/css" />
 
     <!-- COLOR SKIN CSS -->
     <link id="theme" rel="stylesheet" type="text/css" media="all" href="{{ asset('admin-assets/sash/assets/colors/color1.css') }}" />
@@ -358,6 +359,29 @@
 
     <!-- CUSTOM JS -->
     <script src="{{ asset('admin-assets/sash/assets/js/custom.js') }}"></script>
+    <script src="{{ asset('node-snackbar/dist/snackbar.min.js') }}"></script>
+
+@if (session()->has('error'))
+    <script>
+        Snackbar.show({
+            text: "{{ session()->pull('error') }}",
+            pos: 'bottom-right',
+            actionTextColor: '#fff',
+            backgroundColor: "#e7515a",
+            actionText: "OK"
+        });
+    </script>
+@elseif (session()->has('success'))
+    <script>
+        Snackbar.show({
+            text: "{{ session()->pull('success') }}",
+            pos: 'bottom-right',
+            actionTextColor: '#fff',
+            backgroundColor: "#1abc9c",
+            actionText: 'OK',
+        });
+    </script>
+@endif
 
    @yield('script')
 
