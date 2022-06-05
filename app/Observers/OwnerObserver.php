@@ -14,7 +14,10 @@ class OwnerObserver
      */
     public function created(Owner $owner)
     {
-        //
+        if(substr($owner->kn_id, 0, 2) == 'OW' && $owner->kn_id != null) {
+            $owner->kn_id = 'OW-'. $owner->kn_id;
+            $owner->save();
+        }
     }
 
     /**

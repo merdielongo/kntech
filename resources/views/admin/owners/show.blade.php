@@ -6,8 +6,9 @@
         <div class="col-12">
             <div class="card p-5">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-12 mb-2">
                         <div class="d-flex justify-content-end">
+                            <a href="{{ route('owners.destroy', ['owner' => $owner]) }}" class="btn btn-primary me-2">Réinitialisé le mot de pass</a>
                             <a href="{{ route('owners.destroy', ['owner' => $owner]) }}" class="btn btn-success me-2">Blocker le compte</a>
                             <a href="{{ route('owners.destroy', ['owner' => $owner]) }}" class="btn btn-secondary me-2">Modifier</a>
                             <a href="{{ route('owners.destroy', ['owner' => $owner]) }}" class="btn btn-danger">Supprimer</a>
