@@ -8,9 +8,9 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="d-flex justify-content-end">
-                            <a href="{{ route('owners.destroy', ['owner' => $owner]) }}" class="btn btn-success me-2">Blocker le compte</a>
-                            <a href="{{ route('owners.destroy', ['owner' => $owner]) }}" class="btn btn-secondary me-2">Modifier</a>
-                            <a href="{{ route('owners.destroy', ['owner' => $owner]) }}" class="btn btn-danger">Supprimer</a>
+                            <a href="{{ route('organizations.destroy', ['organization' => $organization]) }}" class="btn btn-success me-2">Blocker l'organization</a>
+                            <a href="{{ route('organizations.destroy', ['organization' => $organization]) }}" class="btn btn-secondary me-2">Modifier</a>
+                            <a href="{{ route('organizations.destroy', ['organization' => $organization]) }}" class="btn btn-danger">Supprimer</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-4">
@@ -18,48 +18,11 @@
                             <tbody>
                                 <tr>
                                     <td class="text-uppercase">identifiant</td>
-                                    <td><span class="btn btn-sm text-white bg-success rounded-pill">{{ $owner->kn_id }}</span></td>
+                                    <td><span class="btn btn-sm text-white bg-success rounded-pill">{{ $organization->kn_id }}</span></td>
                                 </tr>
                                 <tr>
-                                    <td class="text-uppercase">Nom</td>
-                                    <td>{{ $owner->contact->last_name }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-uppercase">Post-nom</td>
-                                    <td>{{ $owner->contact->middle_name }}</td>
-                                </tr>
-                                <tr>
-                                    <td class="text-uppercase">Prénom</td>
-                                    <td>{{ $owner->contact->first_name }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Authorization</td>
-                                    <td>
-                                        @if ($owner->authorization)
-                                            <span class="btn btn-sm text-white bg-success rounded-pill">Oui</span>
-                                        @else
-                                            <span class="btn btn-sm text-white bg-danger rounded-pill">Non</span>
-                                        @endif
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="text-uppercase">status</td>
-                                    <td><span class="btn btn-sm text-white bg-warning rounded-pill text-uppercase">{{ $owner->status }}</span></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="col-lg-4 col-md-4">
-                        <table class="table">
-                            <tbody>
-                                <tr>
-                                    <td>Organization</td>
+                                    <td>Nom</td>
                                     <td>{{ $organization->name }}</td>
-                                </tr>
-                                <tr>
-                                    <td>Identifiant OR</td>
-                                    <td><span class="btn btn-sm text-white bg-primary rounded-pill text-uppercase">{{ $organization->kn_id }}</span></td>
                                 </tr>
                                 <tr>
                                     <td>Activation de l'agranization</td>
@@ -72,9 +35,20 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td>Status de l'agranization</td>
+                                    <td>Nom du proprietaire</td>
+                                    <td>{{ $organization->owner->contact->full_name }}</td>
+                                </tr>
+                                <tr>
+                                    <td class="text-uppercase">status</td>
                                     <td><span class="btn btn-sm text-white bg-warning rounded-pill text-uppercase">{{ $organization->status }}</span></td>
                                 </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="col-lg-5 col-md-5">
+                        <table class="table">
+                            <tbody>
                                 <tr>
                                     <td class="text-uppercase">Creation</td>
                                     <td>{{ $organization->created_at->locale('fr_FR')->isoFormat('LLL') }}</td>
@@ -83,21 +57,73 @@
                                     <td class="text-uppercase">Last update</td>
                                     <td>{{ $organization->updated_at->locale('fr_FR')->isoFormat('LLL') }}</td>
                                 </tr>
+                                <tr>
+                                    <td><a href="#" class="btn btn-primary">Ajouter un manager</a></td>
+                                    <td><a href="#" class="btn btn-primary">Ajouter une entité</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="btn btn-primary">Gérée les accées</a></td>
+                                    <td><a href="#" class="btn btn-primary">Achété une license</a></td>
+                                </tr>
+                                <tr>
+                                    <td><a href="#" class="btn btn-primary">Acheté des modules supl.</a></td>
+                                    <td><a href="#" class="btn btn-primary">Achété une license</a></td>
+                                </tr>
                             </tbody>
                         </table>
                     </div>
 
-                    <div class="col-lg-4 col-md-4">
+                    <div class="col-lg-3 col-md-3">
                         <div class="card p-5">
-                            @if ($owner->contact->photo != null)
-                                <img src="{{ $owner->contact->photo }}" alt="">
+                            @if ($organization->logo != null)
+                                <img src="{{ $organization->logo }}" alt="">
                             @else
                                 <img src="{{ asset('admin-assets/sash/assets/images/users/18.jpg') }}" alt="">
                             @endif
                             <div class="card-body d-flex justify-content-center">
-                                <a href="#" class="btn btn-primary">Modifier la photo du profile</a>
+                                <a href="#" class="btn btn-primary">Modifier le logo</a>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="row p-5">
+                    <div class="col-12">
+                        <div class="d-flex justify-content-center">
+                            <h3 class="card-title">Mes licenses</h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <div class="">
+                        <table class="table table-hover text-nowrap border-bottom" id="basic-datatable">
+                            <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>Kn ID</th>
+                                    <th>Status</th>
+                                    <th>Date d'activation</th>
+                                    <th>Date d'expiration</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($licenses as $key => $license)
+                                <tr>
+                                    <td>{{ $key+1 }}</td>
+                                    <td>{{ $license->kn_id }}</td>
+                                    <td>{{ $license->status }}</td>
+                                    <td>{{ $license->beginning_license }}</td>
+                                    <td>{{ $license->expiration_at }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -173,9 +199,6 @@
         <div class="col-12">
             <div class="card">
                 <div class="row p-5">
-                    {{-- <div class="col-6">
-                        <h3 class="card-title">Liste des offres disponibles</h3>
-                    </div> --}}
                     <div class="col-12">
                         <div class="d-flex justify-content-center">
                             <h3 class="card-title">Liste des offres disponibles</h3>

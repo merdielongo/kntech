@@ -4,17 +4,21 @@ namespace App\Services;
 
 use App\Http\Requests\CreateOrganizationRequest;
 use App\Models\Organization;
+use App\Repositories\LicenseRepository;
 use App\Repositories\OrganizationRepository;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\DB;
 
 class OrganizationService
 {
 
-    protected $organizationRepository;
+    protected OrganizationRepository $organizationRepository;
+    protected LicenseRepository $licenseRepository;
 
     public function __construct() {
         $this->organizationRepository = new OrganizationRepository();
+        $this->licenseRepository = new LicenseRepository();
     }
 
 
@@ -49,6 +53,10 @@ class OrganizationService
         $organization->status = $status ? 'active' : 'disabled' ?? 'suspended';
         $organization->save();
         return $organization;
+    }
+
+    public function getByAllLicense(Organization $organization) : Collection {
+        return $this->licenseRepository->getList(['organization_id' => $organization->id]);
     }
 
 

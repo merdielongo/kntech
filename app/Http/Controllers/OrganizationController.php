@@ -37,15 +37,19 @@ class OrganizationController extends Controller
         ]);
     }
 
+    public function show(Organization $organization, OrganizationService $organizationService) : View {
+        $licenses = $organizationService->getByAllLicense($organization);
+        return view('admin.organizations.show', [
+            'organization' => $organization,
+            'licenses' => $licenses
+        ]);
+    }
+
     public function store(CreateOrganizationRequest $request, OrganizationService $organizationService) {
         $logo = $organizationService->uploadLogo($request);
         $organization = $organizationService->create($request, $logo);
         return redirect()->route('organizations.index')->with('success', $organization->name.' a été enregistrer avec success');
     }
 
-    public function active(Organization $organization, bool $status, OrganizationService $organizationService) {
-        $organizationService->active($organization, $status);
-        return redirect()->route('organizations.index')->with('success', 'Le status a ete modifier');
-    }
 
 }
