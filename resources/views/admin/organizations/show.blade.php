@@ -58,7 +58,7 @@
                                     <td>{{ $organization->updated_at->locale('fr_FR')->isoFormat('LLL') }}</td>
                                 </tr>
                                 <tr>
-                                    <td><a href="#" class="btn btn-primary">Ajouter un manager</a></td>
+                                    <td><a href="{{ route('organizations.manager.create', ['organization' => $organization]) }}" class="btn btn-primary">Ajouter un manager</a></td>
                                     <td><a href="#" class="btn btn-primary">Ajouter une entité</a></td>
                                 </tr>
                                 <tr>

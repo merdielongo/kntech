@@ -57,7 +57,7 @@ class OwnerController extends Controller
     }
 
     public function store(CreateOwnerRequest $request, OwnerService $ownerService) {
-        $owner = $ownerService->create($request, 'owner');
+        $owner = $ownerService->create($request, 'owner', $this);
         return redirect()->route('owners.index')->with('success', $owner->kn_id.' a été enregistrer');
     }
 

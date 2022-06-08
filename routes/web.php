@@ -69,11 +69,13 @@ Route::middleware(['auth'])->group(function() {
     // Manager Controller
     Route::controller(ManagerController::class)->group(function() {
         Route::get('managers/{manager}/activation/{status?}', 'active')->name('managers.active');
+        Route::get('managers/{organization}/create', 'createOrganizationManager')->name('managers.create.organization.manager');
     });
 
     // Organization Controller
     Route::controller(OrganizationController::class)->group(function() {
         Route::get('organizations/{organization}/activation/{status?}', 'active')->name('organizations.active');
+        Route::get('organizations/{organization}/manager/create', 'createManagerOrganization')->name('organizations.manager.create');
     });
 
     /* end admin */
